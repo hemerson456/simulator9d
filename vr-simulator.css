@@ -1,0 +1,903 @@
+*{
+    transition: all 250ms;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    color: #ddd;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.active_font{
+    color: #000!important;
+    transition: all 250ms;
+}
+
+.active_font p{
+    text-shadow: 2px 2px 2px transparent !important;
+    transition: all 250ms;
+}
+
+.active_font main .library-image .rectangulo-lateral .texts-info .rectangulo-title{
+    color: #444 !important;
+}
+
+.active_font main .library-image .rectangulo-lateral .rectangulo-adicional .rectangulo-adicional-blanco{
+    padding: 5px;
+}
+
+.active_font main .library-image .rectangulo-lateral .rectangulo-adicional .rectangulo-adicional-blanco::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background:linear-gradient(45deg,#00aaaa,#3399aa,#bbb,#00bb99,#00aaaa,#3399aa,#aaa,#00bb99);
+    background-size: 800%;
+    border-radius: 10px;
+    filter:blur(5px);
+    animation: glowing 20s linear infinite;
+
+}
+
+.active_font .pie-page span{
+    font-weight:500 ;
+}
+.active_font header{
+    background-color: transparent;
+}
+
+@media only screen and (min-width:750px) {
+    .active_font header{
+        background-color: rgba(10, 10, 10, 0.3);
+    }
+    
+}
+
+body::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+
+body::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    border: none;
+}
+
+@font-face {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    src: url('fonts/apple/SF-Pro.dmg');
+}
+
+header {
+    position: relative;
+    background-color: rgba(10, 10, 10, 0);
+    color: #0af;
+    /* Cambiado a un azul más fuerte simulando color neón */
+    text-align: center;
+    padding: 0.5em;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90px;
+}
+
+@media only screen and (max-width:749px) {
+    header{
+        margin-top: 0.5rem;
+    }
+}
+
+.h1 {
+    color: #0ff;
+    font-style: italic;
+    font-weight: 600;
+    /* Cambiado a 600 para hacerlo más grueso */
+    margin: 0;
+    text-shadow: 2px 2px 4px #fff;
+    background-image: url('assets/visor3.65.png');
+    background-repeat: repeat;
+    background-size: cover;
+    background-position: center;
+    height: 75px;
+    width: 140px;
+    animation: shadow 4s linear infinite ; /*quitar si es necesario*/
+}
+
+.btn-bloq{
+    width: 100vw;
+    position: absolute;
+    padding: 0 20px;
+}
+
+.btns{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    /*transform:translateY(20px);*/
+    margin-left: auto;
+    cursor: pointer;
+}
+
+.btn-night{
+   width: 100%;
+   height: 100%;
+   background-image: url('assets/dia.png');
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-position: center;
+}
+
+.btn-day{
+   width: 0;
+   height: 0;
+   background-image: url('assets/noche.png');
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-position: center;
+}
+
+/*activadores de dia y noche*/
+.active_night{
+    width: 0;
+   height: 0;
+}
+
+.active_day{
+    width: 100%;
+    height: 100%;
+}
+
+.menu {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    padding: 20px;
+    cursor: pointer;
+    z-index: 2;
+    transform: translateY(-50%);
+    display: none;
+}
+
+.options {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #333;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 2px 2px 5px #000;
+    z-index: 3;
+    animation: cascade 0.5s forwards;
+}
+
+@keyframes cascade {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.menu:hover .options {
+    display: block;
+    z-index: 4;
+}
+
+.option {
+    cursor: pointer;
+    padding: 5px;
+    color: #fff;
+}
+
+.option:hover {
+    background-color: #555;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 15px;
+    flex-direction: column;
+    margin-top: 1em;
+}
+
+@media only screen and (max-width:750px) {
+    main{
+        margin-top: 2em;
+    }
+}
+
+
+
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1; /* Fondo inicial */
+}
+
+.star {
+    position: absolute;
+    background: #fff; /* Estrellas iniciales */
+    border-radius: 50%;
+    box-shadow: 1px 1px 2px #fff, -1px -1px 2px #fff;
+    animation: twinkling linear infinite;
+}
+
+/*modo day*/
+
+
+@keyframes twinkling {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+
+/*parrafos medidas*/
+.texts-info{
+    padding: 0px 10px 3px 10px;
+    margin-top: -1px;
+    gap: 0.5em;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.size-p{
+    font-size: 0.85em;
+    text-shadow: 2px 2px 2px #000;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+/*final de parrafo de medida*/
+
+
+/* Estilos del segundo código para los cuadrados */
+.library-image{
+    display: flex;
+    flex-direction: column;
+    gap: 5em;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+@media only screen and (min-width:910px) {
+    .library-image{
+        margin-top: 3rem;
+    }
+    .active_font main .library-image{
+        margin-top: 2rem;
+    }
+} 
+
+/* Estilos para los ocho rectángulos adicionales */
+.rectangulo-adicional {
+    width: 100%;
+    height: 190px;
+    border-radius: 10px;
+    outline: 2.5px solid transparent;
+    outline-offset: -7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 0px 2px;
+    /*margin-bottom: 20px;
+    margin-right: 10px;
+    margin-left: 10px;*/
+    z-index: 0;
+}
+
+.rectangulo-adicional-azul {
+    width: 99%;
+    height: 100%;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+}
+
+.rectangulo-adicional-blanco {
+    width: 98%;
+    height: 100%;
+    border-radius: 10px;
+    border: none;/*2px solid #0d47a1 ;*/
+    /*outline: 2px ridge #ff6f00;*/
+    /*animation: vrsimulator 4s linear infinite ;*/
+    overflow: hidden;
+    position: relative;
+    z-index: 3;
+    padding: 5.5px;
+}
+
+.rectangulo-adicional-blanco::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background:linear-gradient(45deg,#00FFFF,#33CCFF,#ffF,#00FFCC,#00FFFF,#33CCFF,#fff,#00FFCC);
+    background-size: 800%;
+    border-radius: 10px;
+    filter:blur(5px);
+    animation: glowing 20s linear infinite;
+}
+
+@keyframes glowing{
+    0%{
+        background-position: 0 0;
+    }
+    50%{
+        background-position: 400% 0;
+    }
+    100%{
+        background-position: 0 0;
+    }
+}
+
+/* Estilos para los rectángulos laterales */
+.rectangulo-lateral {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 0;
+    flex-direction: column;
+}
+
+@keyframes vrsimulator{
+    0%{
+        outline-color: #ff6f00;
+        border-color: #0d47a1;
+    }
+    25%{
+        outline-color: #ff4c00;
+        border-color: #0088D1;
+    }
+    50%{
+        outline-color: #ff6f00;
+        border-color: #0094D9;
+    }
+    75%{
+        outline-color: #ff8b00;
+        border-color: #0088D1;
+    }
+    100%{
+        outline-color:#ffa500;
+        border-color:#0066a3;
+    }
+}
+
+/*medidas del cuadro oficial para hacerlo responsivo hasat para web*/
+@media only screen and (min-width:400px) and (max-width:499px) {
+    
+    .rectangulo-adicional{
+        height: 206px;
+    }
+
+}
+
+@media only screen and (min-width:500px) and (max-width:561px) {
+    .rectangulo-adicional{
+         height: 240px;
+         width: 431px;
+    }
+    .texts-info{
+        width: 431px;
+    }
+  
+
+}
+
+@media only screen and (min-width:562px)  and (max-width:749px){
+    .rectangulo-adicional{
+        height: 240px;
+        width: 511px;
+   }
+   .texts-info{
+       width: 511px;
+   }
+}
+
+.rectangulo-title{
+    margin-right: auto;
+    font-weight: 500;
+    font-size: 1.1rem;
+    text-shadow: 2px 2px 2px #0094D9;
+    animation: shadow 4s linear infinite ;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+@media only screen and (max-width:749px){
+    .rectangulo-title{
+        margin-left: auto;/*cambiar en caso no quede bien*/
+    }
+}
+
+@keyframes shadow{
+    0%{
+        filter: hue-rotate(0deg);
+     }
+     100%{
+        filter: hue-rotate(360deg);
+     }
+}
+
+/* Estilos para el contenedor del carrusel */
+.slider-wrapper {
+    position: relative;
+    max-width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    height: 100%;
+    border-radius: 10px;
+}
+
+/* Estilos para el carrusel de imágenes */
+.slider {
+    display: flex;
+    aspect-ratio: 16/9;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.slider::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+
+.slider::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    border: none;
+}
+
+
+
+
+/* Estilos para las imágenes dentro del carrusel */
+.slider img {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    object-fit: cover;
+}
+
+
+/*contents contenido personalizado individual*/
+.content1::before{
+    position: absolute;
+    content: 'Ataque hiperrealista de Dinosaurios  \A totalmente inmersivo, en definitiva una de las \A mejores experiencias que ofrecemos.\ATemes ser comido???\AVen a superarlo, si te atreves... 🦖';
+    white-space: pre-line;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #fff!important;
+    line-height: 1.3em;
+    font-weight: 300;
+    background-color: rgba(10, 10, 10, 0.5);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    z-index: 3;
+    padding-left: 3px;
+    font-size: 0.9em;
+    justify-content: center;
+    align-items: center;
+}
+.content2::before{
+    position: absolute;
+    content: 'Recorrido super emocionante para toda \A la familia! Ataque de animales interactivo,\A prueba tu habilidad  para disparar en este\A juego de matar o morir, apto para todas\A las edades, no explícito. 🐊🕷️';
+    white-space: pre-line;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #fff!important;
+    line-height: 1.3em;
+    font-weight: 300;
+    background-color: rgba(10, 10, 10, 0.8);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    z-index: 3;
+    padding-left: 3px;
+    font-size: 0.9em;
+    justify-content: center;
+    align-items: center;
+}
+
+.content3::before{
+    position: absolute;
+    content: 'Recorrido super emocionante para toda la\A familia! Podras recorrer por ciudades \A futuristas con una montaña rusa, haciendote \A vivir una de las mejores experiencias que \A te haran volar la cabeza 🦖';
+    white-space: pre-line;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #fff!important;
+    line-height: 1.3em;
+    font-weight: 300;
+    background-color: rgba(10, 10, 10, 0.65);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    z-index: 3;
+    padding-left: 3px;
+    font-size: 0.9em;
+    justify-content: center;
+    align-items: center;
+}
+.content4::before{
+    position: absolute;
+    content: 'Péndulo mecánico de 400 metros de altura,\A en medio de una ciudad hiperrealista,\A y a la mitad del juego, el mecanismo se rompe...\A ¡¡PAL SUELO!! Te gusta lo extremo?? \A Esta es la buena...\A No apto para gallinas 🐔🥚';
+    white-space: pre-line;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #fff!important;
+    line-height: 1.3em;
+    font-weight: 300;
+    background-color: rgba(10, 10, 10, 0.65);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    z-index: 3;
+    padding-left: 3px;
+    font-size: 0.8em;
+    justify-content: center;
+    align-items: center;
+}
+
+.content5::before{
+    position: absolute;
+    content: 'Alguna vez has tenido una pesadilla de la que\A no puedes despertar???\A Bienvenido de nuevo 💀👹 \A 🚨 No apto para menores ni personas \A con problemas cardiacos.';
+    white-space: pre-line;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #fff!important;
+    line-height: 1.3em;
+    font-weight: 300;
+    background-color: rgba(10, 10, 10, 0.5);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    z-index: 3;
+    padding-left: 3px;
+    font-size: 0.8em;
+    justify-content: center;
+    align-items: center;
+}
+.content6::before{
+    position: absolute;
+    content: 'Alguna vez has querido vivir una vida de \A pura accion  esta es tu gran oportunidad 💀👹 \A 🚨 No apto para menores ni personas con \A problemas cardiacos.';
+    white-space: pre-line;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #fff!important;
+    line-height: 1.3em;
+    font-weight: 300;
+    background-color: rgba(10, 10, 10, 0.5);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    z-index: 3;
+    padding-left: 3px;
+    font-size: 0.9em;
+    justify-content: center;
+    align-items: center;
+}
+
+.content7::before{
+    position: absolute;
+    content: '------ 💀👹 \A 🚨 No apto para menores ni personas\A con problemas cardiacos.';
+    white-space: pre-line;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #fff!important;
+    line-height: 1.3em;
+    font-weight: 300;
+    background-color: rgba(10, 10, 10, 0.5);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    z-index: 3;
+    padding-left: 3px;
+    font-size: 0.9em;
+    justify-content: center;
+    align-items: center;
+}
+
+.content8::before{
+    position: absolute;
+    content: '------ 💀👹 \A 🚨 No apto para menores ni personas \A con problemas cardiacos.';
+    white-space: pre-line;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #fff!important;
+    line-height: 1.3em;
+    font-weight: 300;
+    background-color: rgba(10, 10, 10, 0.5);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    z-index: 3;
+    padding-left: 3px;
+    font-size: 0.9em;
+    justify-content: center;
+    align-items: center;
+}
+
+@media only screen and (min-width:500px) {
+    .content1::before,.content2::before ,.content3::before ,.content4::before 
+    ,.content5::before ,.content6::before ,.content7::before ,.content8::before{
+        font-size: 1.1em;
+    }
+}
+/* Estilos para la barra de navegación del carrusel */
+.slider-nav {
+    display: flex;
+    gap: 5px;
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+
+/*bton de mas informacion de cada bloque*/
+.slider-info{
+    display: flex;
+    gap: 5px;
+    position: absolute;
+    left: 91%;
+    top: 10px;
+    z-index: 999;
+    background:linear-gradient(45deg,#00aaaa,#3399aa,#bbb,#00bb99,#00aaaa,#3399aa,#aaa,#00bb99);
+    border-radius: 50%;
+    background-size: 800%;
+    animation: glowing 20s linear infinite;
+
+}
+
+@media only screen and (max-width:750px){
+    .movil-web{
+        display: none;
+    }
+}
+
+@media only screen and (min-width:550px){
+    .slider-info{
+        left: 93%;
+    }
+} 
+@media only screen and (min-width:860px){
+    .slider-info{
+        left: 91%;
+        display: none;
+    }
+
+    .content1::before{
+        display: none;
+    }
+} 
+
+.slider-info a{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: transparent;
+    transition: opacity 250ms ease;
+    backdrop-filter: blur(5px);
+    opacity: 0.9;
+    background-image: url('assets/incognita3.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+}
+
+.active_slide{
+    transform: scale(1)!important;
+    width: 100%!important;
+    height: 100%!important;
+}
+
+@media only screen and (min-width:860px) {
+    .slider-info a{
+        width: 25px;
+        height: 25px;
+    }
+}
+/*bton de mas informacion de cada bloque*/
+
+
+/* Estilos para los enlaces de navegación del carrusel */
+.slider-nav a {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: 1px solid #000;
+    background-color: #fff;
+    opacity: 0.5;
+    transition: opacity 250ms ease;
+}
+
+/* Estilos para el estado activo de los enlaces de navegación del carrusel */
+.slider-nav a.active {
+    opacity: 1;
+    background-color: #000;
+    border: 1px solid #fff;
+}
+
+/*footer*/
+.pie-page{
+    width: 100%;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1em;
+    background-color: rgba(10, 10, 10, 0.3);
+}
+.pie-page span{
+    text-align: center;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 300;
+    font-size: 0.8em;
+    color: #fff;
+    text-shadow: 1.5px 1.5px 1.5px #000;
+}
+
+@media only screen and (min-width:1200px){
+    .pie-page span{
+        font-size: 1em;
+        text-shadow: 2.5px 2.5px 2.5px #000;
+    }
+}
+
+
+/*footer final*/
+
+
+@media only screen and (max-width: 768px) {
+
+    .rectangulo-lateral {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+@media only screen and (min-width:900px) {
+    .slider-nav a:hover {
+        opacity: 1;
+        background-color: #000;
+        border: 1px solid #fff;
+    }
+}
+
+
+
+
+/*ordenamiento de los contenedores para pc*/
+@media only screen and (min-width:750px) {
+    .rectangulo-lateral{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding: 0 0px;
+    }
+
+    .rectangulo-adicional{
+        height: 240px;
+    }
+    
+
+    /*agregar esta clase a la seccion del texto para que vaya a la derecha*/
+    .order-2{
+        order: 2;
+    }
+
+    header{
+        height: 110px;
+        margin-top: 0;
+    }
+
+    main{
+        margin: 50px 0 20px 0;
+    }
+
+
+    .h1{
+        transform: translateY(20px) ;
+        background-image: url('assets/visor3.2.png');
+        height: 100px;
+    }
+
+    .btns{
+        transform: translateY(10px)
+        
+    }
+
+    .btn-bloq{
+        transform: translateY(25px)
+    }
+
+    .library-image{
+        gap: 7em;
+    }
+}
+
+@media only screen and (min-width:860px){
+    .texts-info{
+      width: 376px;  
+    }
+    .rectangulo-adicional{
+        width: 411px;
+        height: 240px;
+    }
+
+    .library-image{
+        gap: 8em;
+    }
+
+    .rectangulo-title{
+        font-size: 1.6rem;
+    }
+
+    .size-p{
+        font-size: 1.15rem;
+    }
+
+    .btn-bloq{
+        width: 820px;
+    }
+}
+
+@media only screen and (min-width:910px){
+    .rectangulo-lateral{
+        width: 900px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .btn-bloq{
+        transform: translateY(28px)
+    }
+
+    .h1{
+        transform: translateY(20px) scale(1.1);
+    }
+
+    header:hover > .h1{
+        transform: scale(1.2) translateY(20px)
+    }
+
+    .library-image{
+        gap: 9em;
+    }
+}
